@@ -17,7 +17,8 @@ class LoaderStrategy(object):
         for strategy in self.strategies:
             try:
                 strategy.handle()
-                return strategy
+                if strategy.status != '404 NOT FOUND':
+                    return strategy
             except Exception:
                 # TODO: be more intelligent about responding here
                 pass
